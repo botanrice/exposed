@@ -1,0 +1,102 @@
+h1, h2, h3, h4, h5, h6, p, a {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1.6;
+  background-color: white;
+}
+header {
+  /* position: fixed;
+  top: 0; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+}
+header img {
+  max-width: 30px;
+  max-height: 30px;
+  margin-right: auto;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 99px;
+  /* background-color: #2d2d2d; */
+  /* box-shadow:  4px 4px 7px 0px rgba(0, 0, 0, 0.5); */
+}
+.body-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.center-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  padding: 20px;
+  text-align: left;
+  line-height: 2;
+}
+.center-nav img {
+  width: 50%;
+  height: 50%;
+}
+footer {
+  text-align: center;
+  padding: 10px 0;
+}
+
+#gallery {
+  align-items: center;
+}
+
+#trials {
+  border: 1px solid grey;
+  width: 80%;
+}
+
+#trials h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-style: italic;
+  margin: 0;
+}
+
+#trials h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  font-style: italic;
+  text-decoration: overline;
+  color: #3c3c3c;
+}
+
+#trials p {
+  font-size: 0.9rem;
+}
+
+#trials a {
+  font-size: 0.9rem;
+}
+
+#trials table {
+  border: 2px solid rgb(140 140 140);
+}
+
+#trials th,
+#trials td {
+  border: 1px solid rgb(160 160 160);
+  font-size: 0.9rem;
+}
