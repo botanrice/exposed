@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'windowsregular';
+  src: url('assets/fonts/windows_regular-webfont.woff2') format('woff2'),
+       url('assets/fonts/windows_regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 h1, h2, h3, h4, h5, h6, p, a {
   margin: 0;
   padding: 0;
@@ -10,13 +18,11 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'windowsregular', "Courier New", Courier, monospace;
   line-height: 1.6;
   background-color: white;
 }
 header {
-  /* position: fixed;
-  top: 0; */
   width: 100%;
   display: flex;
   align-items: center;
@@ -24,14 +30,17 @@ header {
   background-color: white;
 }
 header img {
-  max-width: 30px;
-  max-height: 30px;
+  max-width: 40px;
+  max-height: 40px;
   margin-right: auto;
   margin-left: 10px;
   padding: 5px;
   border-radius: 99px;
   /* background-color: #2d2d2d; */
   /* box-shadow:  4px 4px 7px 0px rgba(0, 0, 0, 0.5); */
+}
+#page-title {
+  margin-left: 10px; 
 }
 .body-content {
   flex: 1;
@@ -54,15 +63,26 @@ header img {
   width: 50%;
   height: 50%;
 }
+.proverb-aesthetic {
+  font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.2rem;
+  margin: 20px 0;
+}
 footer {
   text-align: center;
+  margin-top: 20px;
   padding: 10px 0;
+  font-size: 0.8rem;
 }
+
+/* *** IDs *** */
 
 #gallery {
   align-items: center;
 }
 
+/* Trials Page */
 #trials {
   border: 1px solid grey;
   width: 80%;
@@ -99,4 +119,48 @@ footer {
 #trials td {
   border: 1px solid rgb(160 160 160);
   font-size: 0.9rem;
+}
+
+/* Trials Poster */
+#trials-poster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
+#trials-poster img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Icon Links */
+#icon-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 10px 0;
+  border-top: 1.5px solid #3c3c3c;
+  border-bottom: 1.5px solid #3c3c3c;
+  padding: 5px 0;
+  background-color: rgb(245, 242, 242);
+  width: 100%;
+}
+
+.icon-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.icon-link .ico {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-link .ico-img {
+  width: 40px;
+  height: 32px;
 }

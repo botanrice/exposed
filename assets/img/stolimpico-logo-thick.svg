@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422.64 422.64">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #e0ac6c;
+        stroke-miterlimit: 10;
+        stroke-width: 21px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_7_copy_11" data-name="Layer 7 copy 11">
+    <g id="Logo-Thicc">
+      <circle class="cls-1" cx="211.32" cy="342.29" r="69.85"/>
+      <circle class="cls-1" cx="118.71" cy="303.93" r="69.85"/>
+      <circle class="cls-1" cx="80.35" cy="211.32" r="69.85"/>
+      <circle class="cls-1" cx="118.71" cy="118.71" r="69.85"/>
+      <circle class="cls-1" cx="211.32" cy="80.35" r="69.85"/>
+      <circle class="cls-1" cx="303.93" cy="118.71" r="69.85"/>
+      <circle class="cls-1" cx="342.29" cy="211.32" r="69.85"/>
+      <circle class="cls-1" cx="303.93" cy="303.93" r="69.85"/>
+    </g>
+  </g>
+</svg>
