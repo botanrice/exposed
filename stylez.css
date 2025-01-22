@@ -50,6 +50,14 @@ header img {
   align-items: center;
   width: 100%;
 }
+.top-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 1rem;
+}
 .center-nav {
   display: flex;
   flex-direction: column;
@@ -62,6 +70,24 @@ header img {
 .center-nav img {
   width: 50%;
   height: 50%;
+}
+.top-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  max-width: 600px;
+  padding: 20px;
+  text-align: left;
+  line-height: 2;
+}
+.right-nav {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  max-width: 600px;
+  padding: 20px;
+  text-align: right;
+  line-height: 2;
 }
 .proverb-aesthetic {
   font-size: 0.75rem;
@@ -163,4 +189,98 @@ footer {
 .icon-link .ico-img {
   width: 40px;
   height: 32px;
+}
+
+.icon-link .runescape-img {
+  width: 64px;
+  height: 64px;
+}
+
+
+/* *** CSS Effects *** */
+
+#typewriter-zone {
+  width: min-content;
+}
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  /* letter-spacing: .15em; Adjust as needed */
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret 0.5s step-end 2.5s,
+    hide-caret 0s 4s forwards; /* New animation to hide the caret */
+}
+
+.typewriter-second {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  visibility: hidden; /* Initially hidden */
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret .75s step-end 4s,
+    show 0s 3.5s forwards,
+    hide-caret 0s 8.25s forwards; /* New animation to hide the caret */
+  animation-delay: 3.5s;
+}
+
+.typewriter-third {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  visibility: hidden; /* Initially hidden */
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret .75s step-end 4s,
+    show 0s 7s forwards,
+    hide-caret 0s 11.75s forwards; /* New animation to hide the caret */
+  animation-delay: 7s;
+}
+
+.typewriter-fourth {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  visibility: hidden; /* Initially hidden */
+  animation: 
+    typing 2s steps(40, end),
+    blink-caret .75s step-end infinite,
+    show 0s 10.5s forwards;
+  animation-delay: 10.5s;
+}
+
+.typewriter-opposite {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  visibility: hidden; /* Initially hidden */
+  animation: 
+    typing 2s steps(end, 40),
+    blink-caret .75s step-end 4s,
+    show 0s 14s forwards;
+  animation-delay: 14s;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+/* New keyframe to handle visibility */
+@keyframes show {
+  to { visibility: visible; }
+}
+
+@keyframes hide-caret {
+  to { border-color: transparent; }
 }
