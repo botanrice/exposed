@@ -50,15 +50,7 @@ header img {
   align-items: center;
   width: 100%;
 }
-.top-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  padding: 1rem;
-}
-.center-nav {
+.body-content div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,9 +59,17 @@ header img {
   text-align: left;
   line-height: 2;
 }
-.center-nav img {
+.body-content img {
   width: 50%;
   height: 50%;
+}
+.top-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 1rem;
 }
 .top-nav {
   display: flex;
@@ -181,17 +181,28 @@ footer {
   margin: 0 10px;
 }
 
-.icon-link .ico {
+.icon-link-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 10px;
+  gap: 10px;
+}
+
+.icon-link .ico,
+.icon-link-row .ico {
   width: 32px;
   height: 32px;
 }
 
-.icon-link .ico-img {
+.icon-link .ico-img,
+.icon-link-row .ico-img {
   width: 40px;
   height: 32px;
 }
 
-.icon-link .runescape-img {
+.icon-link .runescape-img,
+.icon-link-row .runescape-img {
   width: 64px;
   height: 64px;
 }
