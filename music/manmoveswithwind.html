@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cobblestone</title>
+  <link rel="stylesheet" href="../stylez.css" />
+  <link rel="icon" href="../assets/img/stolimpico-logo-thick.png" type="image/x-icon" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZFL3CGCTSW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZFL3CGCTSW', {
+      'page_title': document.title
+    });
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #4a6350 url("../assets/img/manmoveswithwind2.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .windbox {
+      position: relative;
+      width: 1368px;
+      /* Match the width of your background image */
+      height: 768px;
+      /* Match the height of your background image */
+      background: url('your-image.jpg') no-repeat center;
+      background-size: cover;
+    }
+
+    .link {
+      position: absolute;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      height: 78px;
+      width: 352px;
+    }
+
+    .link-1 {
+      top: 363px;
+      left: 547px;
+    }
+
+    /* Adjust positions */
+    .link-2 {
+      top: 481px;
+      left: 561px;
+    }
+
+    .link-3 {
+      top: 601px;
+      left: 561px;
+    }
+
+    .message-box {
+      position: absolute;
+      top: 333px;
+      /* Match link-1's position */
+      left: 547px;
+      /* Match link-1's position */
+      background: url("../assets/img/manwindrect.png") no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 40px;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      display: none;
+      /* Initially hidden */
+      opacity: 0;
+      /* Start fully transparent */
+      transition: opacity 1s ease;
+      /* Transition effect */
+      width: 445px;
+      height: 369px;
+    }
+
+    .message-box.visible {
+      display: block;
+      opacity: 1;
+      /* Fully visible */
+    }
+
+    .image-popup {
+      position: absolute;
+      top: 559px;
+      /* Just below link-2 */
+      left: 561px;
+      /* Match link-2's position */
+      background: url("../assets/img/stoindapark.jpeg") no-repeat center center;
+      background-size: cover;
+      width: 210px;
+      height: 170px;
+      display: none;
+      /* Initially hidden */
+      opacity: 0;
+      /* Start fully transparent */
+      transition: opacity 1s ease;
+      /* Transition effect */
+    }
+
+    .image-popup.visible {
+      display: block;
+      opacity: 1;
+      /* Fully visible */
+    }
+
+    .text-popup {
+      position: absolute;
+      top: 559px;
+      left: 261px;
+      background-color: #4a6350;
+      color: white;
+      padding: 20px;
+      font-family: times new roman;
+      font-size: 12px;
+      width: 250px;
+      display: none;
+      /* Initially hidden */
+      opacity: 0;
+      /* Start fully transparent */
+      transition: opacity 1s ease;
+      /* Transition effect */
+    }
+
+    .text-popup.visible {
+      display: block;
+      opacity: 1;
+      /* Fully visible */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="windbox">
+    <a class="link link-1" href="javascript:void(0);" id="link-1"></a>
+    <a class="link link-2" href="javascript:void(0);"></a>
+    <a class="link link-3" href="https://borice.exposed/music"></a>
+    <div class="message-box" id="message-box">
+      <p>man moves with the wind</p>
+    </div>
+  </div>
+  <audio id="background-audio" src="../assets/sound/manmoveswithwind.mp3" type="audio/mp3" autoplay loop></audio>
+  <script>
+    const link1 = document.getElementById('link-1');
+    const messageBox = document.getElementById('message-box');
+
+    link1.addEventListener('click', () => {
+      messageBox.style.display = 'block'; // Ensure the element is visible
+      setTimeout(() => {
+        messageBox.classList.add('visible'); // Trigger the transition
+      }, 0); // Allow the browser to register the display change
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!messageBox.contains(event.target) && event.target !== link1) {
+        messageBox.classList.remove('visible');
+        setTimeout(() => {
+          messageBox.style.display = 'none';
+        }, 1000); // Wait for the transition to complete before hiding
+      }
+    });
+
+    const audio = document.getElementById('background-audio');
+    audio.volume = 0; // Start with volume at 0
+    audio.play();
+
+    let fadeInInterval = setInterval(() => {
+      if (audio.volume < 1) {
+        audio.volume = Math.min(audio.volume + 0.1, 1); // Increase volume gradually
+      } else {
+        clearInterval(fadeInInterval); // Stop fading in when volume reaches 1
+      }
+    }, 400); // Adjust volume every 200ms
+
+    const link3 = document.querySelector('.link-2');
+    const imagePopup = document.createElement('div');
+    imagePopup.classList.add('image-popup');
+    document.body.appendChild(imagePopup);
+
+    link3.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent navigation
+      imagePopup.style.display = 'block'; // Ensure the element is visible
+      setTimeout(() => {
+        imagePopup.classList.add('visible'); // Trigger the transition
+      }, 0); // Allow the browser to register the display change
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!imagePopup.contains(event.target) && event.target !== link3) {
+        imagePopup.classList.remove('visible');
+        setTimeout(() => {
+          imagePopup.style.display = 'none';
+        }, 1000); // Wait for the transition to complete before hiding
+      }
+    });
+
+    const textPopup = document.createElement('div');
+    textPopup.classList.add('text-popup');
+    textPopup.innerHTML = `
+        <p>hey, thanks for being here. i appreciate you and hope you enjoy the sound.</p>
+        <a href="https://soundcloud.com/stoicdapoet/manmoveswithwind" target="_blank" style="color: white; text-decoration: underline;">
+          if you cant hear anything, turn up your volume or click this link :)
+        </a>
+      `;
+    document.body.appendChild(textPopup);
+
+    link3.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent navigation
+      imagePopup.style.display = 'block'; // Ensure the image popup is visible
+      textPopup.style.display = 'block'; // Ensure the text popup is visible
+      setTimeout(() => {
+        imagePopup.classList.add('visible'); // Trigger the image transition
+        textPopup.classList.add('visible'); // Trigger the text transition
+      }, 0); // Allow the browser to register the display change
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!imagePopup.contains(event.target) && !textPopup.contains(event.target) && event.target !== link3) {
+        imagePopup.classList.remove('visible');
+        textPopup.classList.remove('visible');
+        setTimeout(() => {
+          imagePopup.style.display = 'none';
+          textPopup.style.display = 'none';
+        }, 1000); // Wait for the transition to complete before hiding
+      }
+    });
+  </script>
+  <footer>
+    <p>© bo rice. 2025</p>
+  </footer>
+</body>
+
+</html>
