@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO: DEETRANADA</title>
+    <link rel="stylesheet" href="../stylez.css" />
+    <link rel="icon" href="../assets/img/deetranada_bkg.jpg" type="image/x-icon" />
+    <style>
+      body {
+        background-image: url('../assets/img/deetranada_bkg.jpg');
+        background-repeat: repeat;
+        background-size: contain;
+      }
+      .body-content-dee {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .audio-main {
+        background-color: rgba(255, 255, 255, 0.5);
+        /* mix-blend-mode: soft-light; */
+        padding: 5px;
+        border-radius: 10px;
+        max-width: 50%;
+        color: yellow;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 600px;
+        padding: 20px;
+        text-align: left;
+        line-height: 2;
+        letter-spacing: 0.3rem;
+      }
+      .audio-main-info > p > i {
+        color: rgb(255, 255, 182);
+        letter-spacing: normal;
+      }
+      .audio-secondary {
+        background-color: none;
+        /* mix-blend-mode: soft-light; */
+        padding: 5px;
+        border-radius: 10px;
+        color: yellow;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+      .audio-secondary .audio-main-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+      }
+      .divider {
+        width: 100%;
+        height: 2px;
+        background-color: yellow;
+        margin: 20px 0;
+      }
+      .reveal-text {
+        color: yellow;
+        cursor: pointer;
+        text-align: center;
+        margin: 20px 0;
+        text-decoration: underline;
+      }
+      .hidden {
+        display: none;
+      }
+      footer {
+        color: white;
+        background-color: black;;
+        width: 100%;
+        padding: 0;
+      }
+      footer a {
+        color: white;
+      }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZFL3CGCTSW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZFL3CGCTSW', {
+        'page_title': document.title
+      });
+    </script>
+    <script>
+      function revealBeats() {
+        document.getElementById('hidden-beats').classList.toggle('hidden');
+      }
+    </script>
+  </head>
+  <body>
+    <div class="body-content-dee">
+      <div class="audio-main">
+        <div class="audio-main-info">
+          <p><i>TO:</i> DEETRANADA</p>
+          <p><i>FROM:</i> STOIC DA POET</p>
+          <p><i>BEAT TITLE:</i> CAFE CAR C-WALK</p>
+          <audio controls>
+            <source src="https://s3.us-east-1.amazonaws.com/dropcolumn.com/flexonem/stoicdapoet_cafecarcwalk_136bpm.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="reveal-text" onclick="revealBeats()">two secret beats for dee. click to enter.</div>
+      <div id="hidden-beats" class="hidden">
+        <div class="audio-secondary">
+          <div class="audio-main-info">
+            <p><i>SECRET BEAT #1 [EXPERIMENT]:</i> ROUNDTABLE BOUNCE</p>
+            <audio controls>
+              <source src="https://s3.us-east-1.amazonaws.com/dropcolumn.com/flexonem/stoicdapoet_brim_138bpm.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+        <div class="audio-secondary">
+          <div class="audio-main-info">
+            <p><i>SECRET BEAT #2 [EXPERIMENT]:</i> NERO</p>
+            <audio controls>
+              <source src="https://s3.us-east-1.amazonaws.com/dropcolumn.com/flexonem/stoicdapoet_nero.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <a href="https://borice.exposed/" target="_blank">
+      <p>© THE CONCOURSE | bo rice exposed 2025</p>
+      </a>
+    </footer>
+  </body>
+</html>
