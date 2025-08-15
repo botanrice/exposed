@@ -1,0 +1,52 @@
+.music-body-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.music-icon-selector-nav {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.music-icon-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  background-color: lightgray;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.music-icon {
+  max-width: 40px;
+  max-height: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* STOLIMPICO */
+.email-signup-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+@media screen and (min-width: 600px) {
+  .music-icon-links {
+    width: 50%;
+  }
+  
+}

@@ -48,9 +48,12 @@ header img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
-.body-content div {
+.body-content img {
+  width: 50%;
+  height: 50%;
+}
+.center-nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,10 +61,6 @@ header img {
   padding: 20px;
   text-align: left;
   line-height: 2;
-}
-.body-content img {
-  width: 50%;
-  height: 50%;
 }
 .top-content {
   flex: 1;
@@ -100,6 +99,23 @@ footer {
   margin-top: 20px;
   padding: 10px 0;
   font-size: 0.8rem;
+}
+
+.email-capture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  margin: 1rem 0;
+}
+
+div[data-lastpass-icon-root] { display: none; }
+div[data-lastpass-root] { display: none; }
+
+.email-capture iframe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* *** IDs *** */
@@ -163,48 +179,52 @@ footer {
 /* Icon Links */
 #icon-links {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0 10px 0;
-  border-top: 1.5px solid #3c3c3c;
-  border-bottom: 1.5px solid #3c3c3c;
-  padding: 5px 0;
-  background-color: rgb(245, 242, 242);
+  flex-direction: column;
+  gap: 50px;
   width: 100%;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
 }
 
 .icon-link {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 10px;
-}
-
-.icon-link-row {
-  display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0 10px;
+  color: inherit;
   gap: 10px;
+  width: 100px;
 }
 
-.icon-link .ico,
-.icon-link-row .ico {
-  width: 32px;
-  height: 32px;
+.icon-link-vert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: inherit;
+  gap: 10px;
+  text-decoration: none;
 }
 
-.icon-link .ico-img,
-.icon-link-row .ico-img {
-  width: 40px;
-  height: 32px;
+#icon-links .ico-img {
+  max-width: 30px;
+  max-height: 30px;
+  position: relative;
+  z-index: 1;
 }
 
-.icon-link .runescape-img,
-.icon-link-row .runescape-img {
-  width: 64px;
-  height: 64px;
+.trials-icons {
+  display: flex;
+  gap: 20px;
+    max-width: 64px;
+  max-height: 64px;
+}
+
+.trials-icons .icon-link-trials {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  max-width: 64px;
+  max-height: 64px;
 }
 
 
@@ -294,4 +314,23 @@ footer {
 
 @keyframes hide-caret {
   to { border-color: transparent; }
+}
+
+
+
+
+/* # STOLIMPICO */
+.stolimpico-listen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.stolimpico-link {
+  text-decoration: underline;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
