@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>who is bo rice?</title>
     <link rel="stylesheet" href="stylez.css" />
+    <!-- <link href="./out.css" rel="stylesheet"> -->
     <link rel="icon" href="assets/img/stolimpico-logo-thick.png" type="image/x-icon" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZFL3CGCTSW"></script>
@@ -15,6 +16,22 @@
 
       gtag('config', 'G-ZFL3CGCTSW', {
         'page_title': document.title
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var icoImgs = document.getElementsByClassName("ico-img");
+        Array.from(icoImgs).forEach((img) => {
+          img.addEventListener("mouseover", () => {
+            console.log("swapping...");
+            img.play();
+          });
+          img.addEventListener("mouseout", () => {
+            console.log("swapping back...");
+            img.pause();
+          });
+        });
+        
       });
     </script>
   </head>
@@ -31,11 +48,13 @@
       </div>
       <div id="icon-links" class="center-nav" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
         <a class="icon-link" href="music.html">
-          <img class="ico-img" src="assets/img/icons/stolimpico/stolimpico_shirt_icon1_nobkg.png" alt="music-icon" />
+          <!-- <img class="ico-img" src="assets/img/icons/stolimpico/stolimpico_shirt_icon1_nobkg.png" alt="music-icon" /> -->
+          <video id="shirt_vid" class="ico-img" src="assets/img/icons/shirt_icon_rotate.mp4" muted loop></video>
           <span>music</span>
         </a>
-        <a class="icon-link" href="community.html">
-          <img class="ico-img" src="assets/img/icons/concourse_plane_icon1_nobkg.png" alt="community-icon" />
+        <a class="icon-link" href="community.html" >
+          <!-- <img id="monstera" class="ico-img" src="assets/img/icons/monstera.png" alt="community-icon" /> -->
+          <video id="monstera_vid" class="ico-img" src="assets/img/icons/monstera_rotate.mp4" muted loop></video>
           <span>community</span>
         </a>
         <a class="icon-link" href="gallery.html">
