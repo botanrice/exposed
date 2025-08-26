@@ -214,16 +214,33 @@ div[data-lastpass-root] { display: none; }
 .trials-icons {
   display: flex;
   gap: 20px;
-    max-width: 64px;
-  max-height: 64px;
 }
 
 .trials-icons .icon-link-trials {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
   max-width: 64px;
   max-height: 64px;
+}
+
+.trials-icons .icon-link-trials .music-icon {
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.music-body-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
 
