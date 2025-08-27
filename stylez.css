@@ -350,3 +350,16 @@ div[data-lastpass-root] { display: none; }
   flex-direction: column;
   align-items: center;
 }
+
+.stolimpico-link-hidden {
+  text-decoration: underline;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.stolimpico-link-hidden img {
+  width: 48px;
+}
