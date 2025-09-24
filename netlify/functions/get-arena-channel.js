@@ -31,11 +31,31 @@ exports.handler = async (event, context) => {
     }
 
     const channelData = await response.json();
+
+    // Check if there are any channel contents, if not handle gracefully
+    if (!channelData.contents || channelData.contents.length === 0) {
+      return {
+        statusCode: 200,
+        headers: {
+          ...headers,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title: channelData.title,
+          slug: channelData.slug,
+          length: 0,
+          updated_at: channelData.updated_at,
+          contents: []
+        })
+      };
+    }
     
+    // Sort the channel by block position, then fetch only the first 4 blocks
+    const sortedBlocks = channelData.contents.sort((a, b) => a.position - b.position);
     // Transform the data to include only what we need for the gallery
     // Limit to top 4 blocks only
-    const topBlocks = (channelData.contents || []).slice(0, 4);
-    
+    const topBlocks = sortedBlocks.slice(0, 4);
+
     const galleryData = {
       title: channelData.title,
       slug: channelData.slug,
