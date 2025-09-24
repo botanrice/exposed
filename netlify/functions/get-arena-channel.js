@@ -53,15 +53,15 @@ exports.handler = async (event, context) => {
     // Sort the channel by block position, then fetch only the first 4 blocks
     const sortedBlocks = channelData.contents.sort((a, b) => b.position - a.position);
     // Transform the data to include only what we need for the gallery
-    // Limit to top 4 blocks only
-    const topBlocks = sortedBlocks.slice(0, 4);
+    // Limit to bottom 4 blocks only
+    const bottomBlocks = sortedBlocks.slice(-4);
 
     const galleryData = {
       title: channelData.title,
       slug: channelData.slug,
-      length: topBlocks.length,
+      length: bottomBlocks.length,
       updated_at: channelData.updated_at,
-      contents: topBlocks.map(block => {
+      contents: bottomBlocks.map(block => {
         const baseBlock = {
           id: block.id,
           title: block.title,
