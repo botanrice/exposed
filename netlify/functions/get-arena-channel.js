@@ -23,8 +23,8 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Fetch the Are.na channel data
-    const response = await fetch('https://api.are.na/v2/channels/trials-auvfjbpviqm');
+    // Fetch the Are.na channel data for "stoic-da-planet"
+    const response = await fetch('https://api.are.na/v2/channels/stoic-da-planet');
     
     if (!response.ok) {
       throw new Error(`Are.na API request failed: ${response.status}`);
@@ -33,12 +33,15 @@ exports.handler = async (event, context) => {
     const channelData = await response.json();
     
     // Transform the data to include only what we need for the gallery
+    // Limit to top 4 blocks only
+    const topBlocks = (channelData.contents || []).slice(0, 4);
+    
     const galleryData = {
       title: channelData.title,
       slug: channelData.slug,
-      length: channelData.length,
+      length: topBlocks.length,
       updated_at: channelData.updated_at,
-      contents: (channelData.contents || []).map(block => {
+      contents: topBlocks.map(block => {
         const baseBlock = {
           id: block.id,
           title: block.title,

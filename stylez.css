@@ -513,11 +513,12 @@ div[data-lastpass-root] { display: none; }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
   padding: 0;
+  margin-bottom: 20px;
 }
 
 .gallery-item {
@@ -752,6 +753,45 @@ div[data-lastpass-root] { display: none; }
   margin: 0;
   font-size: 0.9rem;
   font-style: italic;
+}
+
+/* *** ARENA CHANNELS LIST STYLES *** */
+
+.channels-container {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.channel-item {
+  margin-bottom: 8px;
+  border: 1px solid #000;
+  background-color: #fff;
+  transition: all 0.1s ease;
+}
+
+.channel-item:hover {
+  background-color: #f5f5f5;
+}
+
+.channel-item a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #000;
+  font-size: 0.85rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.channel-item a:hover {
+  color: #000;
+}
+
+.channel-title {
+  font-size: 0.85rem;
+  letter-spacing: 0;
 }
 
 /* Responsive design for gallery */
