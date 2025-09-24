@@ -26,11 +26,132 @@
   </header>
   <div class="body-content">
     <div class="center-nav" id="gallery">
-      <img src="https://d2w9rnfcy7mm78.cloudfront.net/23671393/original_95c132d1f740b6dd44dca901488d24d3.jpg?1694911642?bc=0" alt="chillin-on-computer">
+      <div id="gallery-header">
+        <h1 id="channel-title">Loading gallery...</h1>
+      </div>
+      <div id="arena-gallery" class="gallery-grid">
+        <div class="loading">
+          <div class="loading-spinner"></div>
+          <p>Loading channel contents...</p>
+        </div>
+      </div>
     </div>
   </div>
   <footer>
     <p>© bo rice. 2025</p>
   </footer>
+
+  <script>
+    async function loadArenaChannel() {
+      try {
+        const response = await fetch('/.netlify/functions/get-arena-channel');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        // Update channel title
+        const titleElement = document.getElementById('channel-title');
+        titleElement.textContent = data.title || 'Gallery';
+        
+        // Create gallery content
+        const galleryElement = document.getElementById('arena-gallery');
+        
+        if (!data.contents || data.contents.length === 0) {
+          galleryElement.innerHTML = '<div class="no-content"><p>No content found in this channel.</p></div>';
+          return;
+        }
+        
+        galleryElement.innerHTML = data.contents.map(block => {
+          switch (block.class) {
+            case 'Image':
+              return `
+                <div class="gallery-item image-block" data-block-id="${block.id}">
+                  <img src="${block.image.large || block.image.original}" 
+                       alt="${block.title || 'Gallery image'}" 
+                       loading="lazy" />
+                  ${block.title ? `<div class="block-title">${block.title}</div>` : ''}
+                </div>
+              `;
+            
+            case 'Text':
+              return `
+                <div class="gallery-item text-block" data-block-id="${block.id}">
+                  <div class="text-content">
+                    ${block.content_html || `<p>${block.content || ''}</p>`}
+                  </div>
+                  ${block.title ? `<div class="block-title">${block.title}</div>` : ''}
+                </div>
+              `;
+            
+            case 'Link':
+              return `
+                <div class="gallery-item link-block" data-block-id="${block.id}">
+                  <a href="${block.source}" target="_blank" rel="noopener noreferrer">
+                    ${block.image ? `<img src="${block.image.large || block.image.thumb}" alt="Link preview" loading="lazy" />` : ''}
+                    <div class="link-content">
+                      <h3>${block.title || 'Link'}</h3>
+                      ${block.description ? `<p>${block.description}</p>` : ''}
+                      <span class="link-url">${block.source}</span>
+                    </div>
+                  </a>
+                </div>
+              `;
+            
+            case 'Attachment':
+              return `
+                <div class="gallery-item attachment-block" data-block-id="${block.id}">
+                  <div class="attachment-content">
+                    <div class="attachment-icon">📎</div>
+                    <h3>${block.title || block.attachment?.file_name || 'Attachment'}</h3>
+                    ${block.attachment?.url ? `<a href="${block.attachment.url}" target="_blank" rel="noopener noreferrer">Download</a>` : ''}
+                  </div>
+                </div>
+              `;
+            
+            default:
+              return `
+                <div class="gallery-item default-block" data-block-id="${block.id}">
+                  <div class="default-content">
+                    <h3>${block.title || 'Content Block'}</h3>
+                    <p class="block-type">${block.class}</p>
+                  </div>
+                </div>
+              `;
+          }
+        }).join('');
+        
+        // Add click handlers for modal view (optional enhancement)
+        addGalleryInteractions();
+        
+      } catch (error) {
+        console.error('Failed to load Are.na channel:', error);
+        const galleryElement = document.getElementById('arena-gallery');
+        galleryElement.innerHTML = `
+          <div class="error-message">
+            <p>Failed to load gallery content.</p>
+            <p class="error-details">${error.message}</p>
+            <button onclick="loadArenaChannel()">Try Again</button>
+          </div>
+        `;
+      }
+    }
+    
+    function addGalleryInteractions() {
+      // Add hover effects and potential modal functionality
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      galleryItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          // Future: Add modal or expanded view functionality
+          console.log('Clicked block:', item.dataset.blockId);
+        });
+      });
+    }
+    
+    // Load the channel when the page loads
+    document.addEventListener('DOMContentLoaded', loadArenaChannel);
+  </script>
 </body>
 </html>
