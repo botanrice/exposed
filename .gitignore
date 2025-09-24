@@ -1,3 +1,4 @@
 exposed.code-workspace
 tailwindcss
 tailwind.config.js
+.env.example

@@ -25,26 +25,206 @@
     </a>
   </header>
   <div class="body-content">
-    <div class="center-nav">
+    <div class="center-nav-forum">
       <p class="proverb-aesthetic">drop by and say hi :)</p>
-      <form name="contact" method="POST" netlify action="coolthx.html">
-        <p>
-          <label>Your Name: <input type="text" name="name" /></label>
-        </p>
-        <p>
-          <label>Your Email: <input type="email" name="email" /></label>
-        </p>
-        <p>
-          <label>Message: <textarea name="message"></textarea></label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
-      </form>      
+      
+      <!-- Message Board Form -->
+      <div class="forum-container">
+        <div class="message-form">
+          <form id="messageForm" name="community-messages" method="POST" netlify>
+            <input type="hidden" name="form-name" value="community-messages" />
+            <p>
+              <label>Your Name: <input type="text" id="userName" name="name" required /></label>
+            </p>
+            <p>
+              <label>Message: <textarea id="userMessage" name="message" placeholder="Share your thoughts..." required></textarea></label>
+            </p>
+            <p>
+              <button type="submit">Post Message</button>
+            </p>
+          </form>
+        </div>
+        
+        <!-- Messages Display -->
+        <div class="messages-container">
+          <div id="messagesBoard"></div>
+        </div>
+      </div>
     </div>
   </div>
   <footer>
     <p>© bo rice. 2025</p>
   </footer>
+
+  <script>
+    // Forum functionality with Netlify Forms
+    class MessageBoard {
+      constructor() {
+        this.messages = [];
+        this.init();
+      }
+
+      async init() {
+        await this.loadMessages();
+        this.displayMessages();
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        const form = document.getElementById('messageForm');
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.handleSubmit();
+        });
+      }
+
+      async handleSubmit() {
+        const nameInput = document.getElementById('userName');
+        const messageInput = document.getElementById('userMessage');
+        
+        const name = nameInput.value.trim();
+        const message = messageInput.value.trim();
+        
+        if (name && message) {
+          const formData = new FormData();
+          formData.append('form-name', 'community-messages');
+          formData.append('name', name);
+          formData.append('message', message);
+          
+          try {
+            const response = await fetch('/', {
+              method: 'POST',
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(formData).toString()
+            });
+            
+            if (response.ok) {
+              // Clear form
+              nameInput.value = '';
+              messageInput.value = '';
+              
+              // Add message to local display (optimistic update)
+              const newMessage = {
+                id: Date.now(),
+                author: name,
+                content: message,
+                timestamp: new Date().toISOString()
+              };
+              
+              this.messages.unshift(newMessage);
+              this.displayMessages();
+              
+              // Save to localStorage as backup
+              localStorage.setItem('netlifyMessages', JSON.stringify(this.messages));
+              
+              // Focus back to name field for next message
+              nameInput.focus();
+              
+              // Show success message
+              this.showMessage('Message posted successfully!', 'success');
+            } else {
+              this.showMessage('Error posting message. Please try again.', 'error');
+            }
+          } catch (error) {
+            console.error('Error submitting form:', error);
+            this.showMessage('Error posting message. Please try again.', 'error');
+          }
+        }
+      }
+
+      async loadMessages() {
+        try {
+          // Fetch messages from Netlify function
+          const response = await fetch('/.netlify/functions/get-messages');
+          
+          if (response.ok) {
+            this.messages = await response.json();
+          } else {
+            console.error('Failed to fetch messages:', response.status);
+            // Fallback to localStorage for development/offline use
+            const stored = localStorage.getItem('netlifyMessages');
+            this.messages = stored ? JSON.parse(stored) : [];
+          }
+        } catch (e) {
+          console.error('Error loading messages:', e);
+          // Fallback to localStorage for development/offline use
+          const stored = localStorage.getItem('netlifyMessages');
+          this.messages = stored ? JSON.parse(stored) : [];
+        }
+      }
+
+      displayMessages() {
+        const container = document.getElementById('messagesBoard');
+        
+        if (this.messages.length === 0) {
+          container.innerHTML = '<div class="no-messages">No messages yet. Be the first to say something!</div>';
+          return;
+        }
+        
+        container.innerHTML = this.messages.map(message => this.createMessageHTML(message)).join('');
+      }
+
+      createMessageHTML(message) {
+        const timestamp = this.formatTimestamp(message.timestamp);
+        
+        return `
+          <div class="message-card">
+            <div class="message-header">
+              <span class="message-author">${this.escapeHtml(message.author)}</span>
+              <span class="message-timestamp">${timestamp}</span>
+            </div>
+            <div class="message-content">${this.escapeHtml(message.content)}</div>
+          </div>
+        `;
+      }
+
+      showMessage(text, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `status-message ${type}`;
+        messageDiv.textContent = text;
+        
+        const form = document.querySelector('.message-form');
+        form.insertBefore(messageDiv, form.firstChild);
+        
+        setTimeout(() => {
+          messageDiv.remove();
+        }, 3000);
+      }
+
+      formatTimestamp(isoString) {
+        const date = new Date(isoString);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffMinutes = Math.floor(diffMs / 60000);
+        const diffHours = Math.floor(diffMs / 3600000);
+        const diffDays = Math.floor(diffMs / 86400000);
+        
+        if (diffMinutes < 1) return 'just now';
+        if (diffMinutes < 60) return `${diffMinutes}m ago`;
+        if (diffHours < 24) return `${diffHours}h ago`;
+        if (diffDays < 7) return `${diffDays}d ago`;
+        
+        return date.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
+        });
+      }
+
+      escapeHtml(unsafe) {
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+    }
+
+    // Initialize the message board when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new MessageBoard();
+    });
+  </script>
 </body>
 </html>
