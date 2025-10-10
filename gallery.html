@@ -38,6 +38,12 @@
       
       <!-- Channels List -->
       <div id="channels-list" class="channels-container">
+        <h3 style="text-align: center;">Other Are.na Channels</h3>
+        <div class="channel-item">
+          <a href="https://www.are.na/stoic-da-poet/sto-glmccsmk5nq" target="_blank" rel="noopener noreferrer">
+            <span class="channel-title">sto!</span>
+          </a>
+        </div>
         <div class="channel-item">
           <a href="https://www.are.na/stoic-da-poet/stoic-da-planet" target="_blank" rel="noopener noreferrer">
             <span class="channel-title">stoic-da-planet</span>
@@ -45,17 +51,17 @@
         </div>
         <div class="channel-item">
           <a href="https://www.are.na/stoic-da-poet/memez-fz4fvrbqy_o" target="_blank" rel="noopener noreferrer">
-            <span class="channel-title">memez-fz4fvrbqy_o</span>
+            <span class="channel-title">memêz</span>
           </a>
         </div>
         <div class="channel-item">
           <a href="https://www.are.na/stoic-da-poet/soularpunk" target="_blank" rel="noopener noreferrer">
-            <span class="channel-title">soularpunk</span>
+            <span class="channel-title">#soularPunk</span>
           </a>
         </div>
         <div class="channel-item">
-          <a href="https://www.are.na/stoic-da-poet/networldz" target="_blank" rel="noopener noreferrer">
-            <span class="channel-title">networldz</span>
+          <a href="https://www.are.na/stoic-da-poet/netw-rldz" target="_blank" rel="noopener noreferrer">
+            <span class="channel-title">netw🌐rldz</span>
           </a>
         </div>
       </div>
@@ -152,12 +158,33 @@
         
       } catch (error) {
         console.error('Failed to load Are.na channel:', error);
+        const galleryHeader = document.getElementById('gallery-header');
+        galleryHeader.innerHTML = '<h1 id="channel-title">Gallery</h1>';
         const galleryElement = document.getElementById('arena-gallery');
         galleryElement.innerHTML = `
-          <div class="error-message">
-            <p>Failed to load gallery content.</p>
-            <p class="error-details">${error.message}</p>
-            <button onclick="loadArenaChannel()">Try Again</button>
+          <div class="gallery-item image-block" data-block-id="waxxx">
+            <img src="assets/img/album/waxxx.jpg" 
+                 alt="Waxxx Album Cover" 
+                 loading="lazy" />
+            <div class="block-title">Waxxx</div>
+          </div>
+          <div class="gallery-item image-block" data-block-id="unlock">
+            <img src="assets/img/album/unlock.jpg" 
+                 alt="Unlock Album Cover" 
+                 loading="lazy" />
+            <div class="block-title">Unlock</div>
+          </div>
+          <div class="gallery-item image-block" data-block-id="jackedup">
+            <img src="assets/img/album/jackedup.jpg" 
+                 alt="Jacked Up Album Cover" 
+                 loading="lazy" />
+            <div class="block-title">Jacked Up</div>
+          </div>
+          <div class="gallery-item image-block" data-block-id="fitnchain">
+            <img src="assets/img/album/fitnchain.jpg" 
+                 alt="Fit n Chain Album Cover" 
+                 loading="lazy" />
+            <div class="block-title">Fit n Chain</div>
           </div>
         `;
       }

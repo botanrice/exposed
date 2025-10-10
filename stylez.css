@@ -500,7 +500,7 @@ div[data-lastpass-root] { display: none; }
 /* *** ARENA GALLERY STYLES *** */
 
 #gallery-header {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   text-align: center;
 }
 
@@ -545,7 +545,7 @@ div[data-lastpass-root] { display: none; }
 }
 
 .image-block img {
-  max-height: 300px;
+  max-height: 150px;
   object-fit: cover;
 }
 
@@ -794,11 +794,61 @@ div[data-lastpass-root] { display: none; }
   letter-spacing: 0;
 }
 
+/* Stolympics page */
+#stolympics {
+  border: 1px solid grey;
+  width: 80%;
+}
+
+#stolympics h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  /* font-style: italic; */
+  margin: 0;
+}
+
+#stolympics h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  /* font-style: italic; */
+  text-decoration: overline;
+  color: #3c3c3c;
+}
+
+#stolympics p {
+  font-size: 0.9rem;
+}
+
+#stolympics a {
+  font-size: 0.9rem;
+}
+
+#stolympics table {
+  border: 2px solid rgb(140 140 140);
+  width: 100%;
+  max-width: 500px;
+}
+
+#stolympics th,
+#stolympics td {
+  border: 1px solid rgb(160 160 160);
+  font-size: 0.9rem;
+}
+
+
+
+
+
 /* Responsive design for gallery */
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
+  }
+
+  .image-block img {
+    max-height: 300px;
+    object-fit: cover;
   }
   
   #channel-title {
@@ -817,15 +867,15 @@ div[data-lastpass-root] { display: none; }
   }
   
   #channel-title {
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
 }
 
 
-          @keyframes shadow-rotate {
-            0%   { box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
-            25%  { box-shadow: 4px 0 12px rgba(0,0,0,0.5); }
-            50%  { box-shadow: 0 -4px 12px rgba(0,0,0,0.5); }
-            75%  { box-shadow: -4px 0 12px rgba(0,0,0,0.5); }
-            100% { box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
-          }
+@keyframes shadow-rotate {
+  0%   { box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+  25%  { box-shadow: 4px 0 12px rgba(0,0,0,0.5); }
+  50%  { box-shadow: 0 -4px 12px rgba(0,0,0,0.5); }
+  75%  { box-shadow: -4px 0 12px rgba(0,0,0,0.5); }
+  100% { box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+}

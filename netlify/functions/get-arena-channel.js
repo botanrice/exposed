@@ -23,8 +23,8 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Fetch the Are.na channel data for "stoic-da-planet"
-    const response = await fetch('https://api.are.na/v2/channels/stoic-da-planet');
+    // Fetch the Are.na channel data for "sto!"
+    const response = await fetch('https://api.are.na/v2/channels/sto-glmccsmk5nq');
     
     if (!response.ok) {
       throw new Error(`Are.na API request failed: ${response.status}`);
