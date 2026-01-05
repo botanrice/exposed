@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artifacts</title>
+  <link rel="stylesheet" href="artifacts.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 1rem;
+      justify-items: center;
+    }
+
+    .base-item {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      text-decoration: none;
+      color: black;
+      font-size: 1.15rem;
+      font-weight: bold;
+      cursor: default;
+    }
+    
+    .grid-item {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: solid 1px black;
+      text-decoration: none;
+      color: black;
+      font-size: 1.15rem;
+      font-weight: bold;
+    }
+    
+    .grid-item:hover {
+      cursor: pointer;
+      border: solid 2px rgb(87, 87, 87);
+    }
+  </style>
+</head>
+<body class="artifacts">
+  <div class="grid">
+    <a href="#" class="base-item">Artifacts</a>
+    <a href="001/" class="grid-item">001</a>
+    <a href="002/" class="grid-item">002</a>
+    <a href="003/" class="grid-item">003</a>
+    <a href="004/" class="grid-item">004</a>
+  </div>
+</body>
+</html>

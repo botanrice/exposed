@@ -1,0 +1,37 @@
+/* ** Artifact Overview Styling ** */
+
+
+/* ** Individual Artifact Styling ** */
+.headframe {
+  background-color: white;
+  padding: 0.5rem 0;
+}
+.headframe .title {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+.headframe .info {
+  margin-top: 0.25rem;
+}
+.appframe {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem 1rem 0rem 0rem;
+  box-sizing: border-box;
+  margin: 0;
+}
+.appframe a {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.appframe iframe {
+  height: 50vh;
+  width: 50vw;
+  border: none;
+}
+.questionframe {
+  margin: 2rem 0;
+  background-color: white;
+  max-width: 600px;
+}
