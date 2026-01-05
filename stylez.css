@@ -796,6 +796,11 @@ div[data-lastpass-root] { display: none; }
 
 /* Stolympics page */
 #stolympics {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px solid grey;
   width: 80%;
 }
@@ -835,7 +840,25 @@ div[data-lastpass-root] { display: none; }
   font-size: 0.9rem;
 }
 
+#stolympics td.flag-cell {
+  vertical-align: middle;
+  padding: 0;
+}
 
+#participant-table {
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+.table_flag {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 24px;
+  object-fit: contain;
+  margin: 0 auto;
+}
 
 
 
